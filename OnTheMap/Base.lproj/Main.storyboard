@@ -341,6 +341,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Vfp-PK-Dhf">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Agw-fh-qXC">
+                                <rect key="frame" x="150" y="306" width="20" height="20"/>
+                            </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJt-6c-u2h">
                                 <rect key="frame" x="35.5" y="512" width="249" height="32"/>
                                 <color key="backgroundColor" red="0.1215686275" green="0.70980392160000005" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -359,16 +362,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RVF-Dx-sCj" firstAttribute="trailing" secondItem="Vfp-PK-Dhf" secondAttribute="trailing" id="KA5-ju-gRF"/>
+                            <constraint firstItem="Agw-fh-qXC" firstAttribute="centerX" secondItem="RVF-Dx-sCj" secondAttribute="centerX" id="ZMM-oe-uPH"/>
                             <constraint firstItem="Vfp-PK-Dhf" firstAttribute="top" secondItem="RVF-Dx-sCj" secondAttribute="top" id="arl-u8-GFf"/>
                             <constraint firstItem="RVF-Dx-sCj" firstAttribute="bottom" secondItem="Vfp-PK-Dhf" secondAttribute="bottom" id="hqn-Hv-5aj"/>
                             <constraint firstItem="fJt-6c-u2h" firstAttribute="centerX" secondItem="RVF-Dx-sCj" secondAttribute="centerX" id="jEH-fV-o9C"/>
                             <constraint firstItem="Vfp-PK-Dhf" firstAttribute="leading" secondItem="RVF-Dx-sCj" secondAttribute="leading" id="r1T-Ae-cLh"/>
                             <constraint firstItem="RVF-Dx-sCj" firstAttribute="bottom" secondItem="fJt-6c-u2h" secondAttribute="bottom" constant="24" id="xTb-uM-VCU"/>
+                            <constraint firstItem="Agw-fh-qXC" firstAttribute="centerY" secondItem="RVF-Dx-sCj" secondAttribute="centerY" id="zBf-eP-uUb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RVF-Dx-sCj"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Agw-fh-qXC" id="nQf-gy-6bf"/>
                         <outlet property="mapView" destination="Vfp-PK-Dhf" id="eEM-hF-yfX"/>
+                        <outlet property="supmit" destination="fJt-6c-u2h" id="Ray-cY-lxm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1KT-gz-YfI" userLabel="First Responder" sceneMemberID="firstResponder"/>

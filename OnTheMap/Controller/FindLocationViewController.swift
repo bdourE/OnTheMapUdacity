@@ -10,23 +10,26 @@ import UIKit
 import MapKit
 class  FindLocationViewController: UIViewController {
    
+    //MARK: UI Configuration Enum
+    enum UIState { case  loading, unloading }
+    
     //MARK: Outlets
     @IBOutlet weak var mapView: MKMapView?
-    
+    @IBOutlet weak var supmit: UIButton?
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     //MARK: Properties
-    private let udacity = Udacity.sharedInstance()
     private let parse = Parse.sharedInstance()
-    
+    private let dataSource = StudentsDatasource.sharedDataSource()
+    var objectId: String? = nil
     
     private var mark: CLPlacemark? = nil
     var loc : String?
     var mediaURL : String?
-    var objectId : String?
+    
     
     override func viewDidLoad() {
-        
-        objectId = self.parse.objectId
-        
+       setUIForState(.loading)
+        objectId = dataSource.objectId
         //Add the placemark on the location
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(loc!) { (placemarkArr, error) in
@@ -37,6 +40,7 @@ class  FindLocationViewController: UIViewController {
             } else if (placemarkArr?.isEmpty)! {
                 self.alertWithError(error: Constants.Errors.noLocationFound)
             } else {
+                self.setUIForState(.unloading)
                 self.mark = placemarkArr?.first
                 self.mapView?.showAnnotations([MKPlacemark(placemark: self.mark!)], animated: true)
             }
@@ -49,24 +53,24 @@ class  FindLocationViewController: UIViewController {
         
       //2-A if user has location before update with new one
         if let objectId = objectId {
-            parse.updateStudentLocationWith(mediaURL: mediaURL!, studentData: StudentLocationModel(objectID: objectId, student: udacity.student!, location: location)) { (success, error) in
+            parse.updateStudentLocationWith(mediaURL: mediaURL!, studentData: StudentLocationModel(objectID: objectId, student: dataSource.student!, location: location)) { (success, error) in
                 if let e = error {
                     self.alertWithError(error: e)
                 } else {
                       NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.notifications.studentLocationsPinnedDown), object: nil)
-                    self.udacity.student?.mediaURL = self.mediaURL!
+                    self.dataSource.student?.mediaURL = self.mediaURL!
                     self.dismiss(animated: true, completion: nil)
                 }
             }
         }
         //2-A if user hasn't location before post new one
         else {
-            parse.postStudentsLocation(studentData: StudentLocationModel(student: udacity.student!, location: location), mediaURL: mediaURL!) { (success, error) in
+            parse.postStudentsLocation(studentData: StudentLocationModel(student: dataSource.student!, location: location), mediaURL: mediaURL!) { (success, error) in
                 if let _ = error {
                     self.alertWithError(error: Constants.Errors.postingFailed)
                 } else {
                   NotificationCenter.default.post(name: NSNotification.Name(rawValue: Constants.notifications.studentLocationsPinnedDown), object: nil);
-                    self.udacity.student?.mediaURL = self.mediaURL!
+                    self.dataSource.student?.mediaURL = self.mediaURL!
                     self.dismiss(animated: true, completion: nil)
                 }
             }
@@ -80,4 +84,22 @@ class  FindLocationViewController: UIViewController {
             self.view.alpha = 1.0
         }
     }
+    
+    func setUIForState(_ state: UIState) {
+        switch state {
+            
+        case .loading:
+            activityIndicator.isHidden = false
+            activityIndicator.startAnimating()
+            supmit?.isEnabled = false
+            self.view.alpha = 0.5
+            
+        case .unloading :
+            activityIndicator.isHidden = true
+            activityIndicator.stopAnimating()
+            supmit?.isEnabled = true
+            self.view.alpha = 1.0
+        }}
+  
+
 }

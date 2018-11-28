@@ -10,6 +10,7 @@
 		4232250821AC0B42000BC1AB /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4232250721AC0B42000BC1AB /* Media.xcassets */; };
 		4232250A21AC0E76000BC1AB /* StudentLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4232250921AC0E76000BC1AB /* StudentLocationCell.swift */; };
 		4232250C21AC0F09000BC1AB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4232250B21AC0F09000BC1AB /* TableViewController.swift */; };
+		4232250E21AED6ED000BC1AB /* StudentsDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4232250D21AED6ED000BC1AB /* StudentsDatasource.swift */; };
 		423EA2FE21A35E4D00ADC66C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EA2FD21A35E4D00ADC66C /* AppDelegate.swift */; };
 		423EA30021A35E4D00ADC66C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 423EA2FF21A35E4D00ADC66C /* LoginViewController.swift */; };
 		423EA30321A35E4D00ADC66C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 423EA30121A35E4D00ADC66C /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		4232250721AC0B42000BC1AB /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		4232250921AC0E76000BC1AB /* StudentLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocationCell.swift; sourceTree = "<group>"; };
 		4232250B21AC0F09000BC1AB /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		4232250D21AED6ED000BC1AB /* StudentsDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsDatasource.swift; sourceTree = "<group>"; };
 		423EA2FA21A35E4D00ADC66C /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		423EA2FD21A35E4D00ADC66C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		423EA2FF21A35E4D00ADC66C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				423EA31D21A3631A00ADC66C /* StudentModel.swift */,
 				423EA31F21A3640F00ADC66C /* StudentLocationModel.swift */,
 				423EA32321A3643E00ADC66C /* LocationModel.swift */,
+				4232250D21AED6ED000BC1AB /* StudentsDatasource.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				42D3CA2021A74406003ECB0E /* TabViewContriller.swift in Sources */,
 				42D3CA2421A76FC6003ECB0E /* FindLocationViewController.swift in Sources */,
 				423EA2FE21A35E4D00ADC66C /* AppDelegate.swift in Sources */,
+				4232250E21AED6ED000BC1AB /* StudentsDatasource.swift in Sources */,
 				423EA31521A35F5600ADC66C /* Udacity.swift in Sources */,
 				423EA32821A498F300ADC66C /* MapViewController.swift in Sources */,
 				423EA31E21A3631A00ADC66C /* StudentModel.swift in Sources */,

@@ -24,6 +24,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let udacity = Udacity.sharedInstance()
+    let datasource = StudentsDatasource.sharedDataSource()
   
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class LoginViewController: UIViewController , UITextFieldDelegate {
                         self.udacity.fetchStudentData(fromKey: userKey) { (student, error) in
                             DispatchQueue.main.async {
                                 if let student = student {
-                                    self.udacity.student = student
+                                    self.datasource.student = student
                                     self.performSegue(withIdentifier: Constants.Identifiers.loginSegue, sender: self)
                                 } else {
                                     self.alertWithError(error: error!)

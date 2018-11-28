@@ -12,8 +12,7 @@ class Parse {
     //MARK: Properties
     
     let sessionObject: Session
-    var objectId : String?
-    var studentLocations = [StudentLocationModel]()
+    
     //MARK: Singleton Class
     
     private static var sharedManager = Parse()

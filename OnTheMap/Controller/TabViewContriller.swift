@@ -14,12 +14,11 @@ class TabBarViewContriller: UITabBarController  {
     
     let udacity = Udacity.sharedInstance()
     let parse = Parse.sharedInstance()
-    var studentLocations = [StudentLocationModel]()
+    let datasource = StudentsDatasource.sharedDataSource()
+
     //MARK: LifeCycle Methods
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
- }
+
     //MARK: Actions
     @IBAction func logoutClicked(_ sender: Any) {
       
@@ -35,7 +34,7 @@ class TabBarViewContriller: UITabBarController  {
     
     @IBAction func addLocation(_ sender: Any) {
         //1-get Student Object
-        if let currentStudent = udacity.student {
+        if let currentStudent = datasource.student {
        //2- check if student has location before
             parse.getParticularStudentLocation(uniqueKey: currentStudent.uniqueKey) { (location, error) in
                
@@ -43,7 +42,7 @@ class TabBarViewContriller: UITabBarController  {
                 //3-A user has location before so we should get objectId so we can updated next
                     if let location = location {
                         self.overwriteAlert() { (alert)  in
-                            self.parse.objectId = location.objectID
+                            self.datasource.objectId = location.objectID
                             self.presentPostingVC()
                         }
                     } else {

@@ -13,10 +13,7 @@ class Udacity {
     //MARK: Properties
     
     let sessionObject: Session
-    
-    var student: StudentModel? = nil
-    
-    
+ 
     //MARK: Singleton Class
     
     private static var sharedManager = Udacity()
@@ -85,16 +82,8 @@ class Udacity {
         // Set HTTP Body
         var loginBody = [String : Any]()
         
-        // Check if Login is by Facebook
-        /*   if let facebookToken = facebookToken {
-         loginBody["facebook_mobile"] = [
-         "access_token": facebookToken
-         ]
-         }
-         
-         else { */
+      
         loginBody[HTTPBodyKeys.udacity] = [HTTPBodyKeys.username: username, HTTPBodyKeys.password: password]
-        //  }
         
         // Make request
         makeRequestToUdacity(url: loginURL, method: .POST, body: loginBody as [String : AnyObject]?) {(jsonResponseDictionary, error) in
